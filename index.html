@@ -1,0 +1,2353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NovaMart - Everything You Need</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:#f5f6f7;
+    color:#111827;
+    transition:0.3s;
+}
+
+button,input,select{
+    font:inherit;
+}
+
+/* HEADER */
+
+.header{
+    background:#111827;
+    color:white;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,.2);
+}
+
+.topbar{
+    min-height:65px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    padding:10px 4%;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:800;
+    color:#ffb703;
+    white-space:nowrap;
+    cursor:pointer;
+}
+
+.logo span{
+    color:white;
+}
+
+.search-box{
+    flex:1;
+    display:flex;
+    max-width:800px;
+}
+
+.search-box input{
+    width:100%;
+    padding:12px 15px;
+    border:0;
+    outline:none;
+    font-size:15px;
+    border-radius:7px 0 0 7px;
+}
+
+.search-btn{
+    border:0;
+    background:#ffb703;
+    padding:0 20px;
+    cursor:pointer;
+    font-size:19px;
+    border-radius:0 7px 7px 0;
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.header-btn{
+    background:none;
+    border:0;
+    color:white;
+    cursor:pointer;
+    font-size:14px;
+    white-space:nowrap;
+}
+
+.cart-button{
+    position:relative;
+    font-size:25px;
+}
+
+.cart-count{
+    position:absolute;
+    top:-8px;
+    right:-9px;
+    background:#ef4444;
+    color:white;
+    border-radius:50%;
+    min-width:19px;
+    height:19px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:11px;
+    font-weight:bold;
+}
+
+/* NAV */
+
+.navbar{
+    background:#1f2937;
+    padding:10px 4%;
+    display:flex;
+    gap:9px;
+    overflow-x:auto;
+}
+
+.navbar button{
+    background:transparent;
+    border:0;
+    color:white;
+    padding:7px 12px;
+    cursor:pointer;
+    border-radius:5px;
+    white-space:nowrap;
+}
+
+.navbar button:hover,
+.navbar button.active{
+    background:#374151;
+}
+
+/* HERO */
+
+.hero{
+    margin:20px auto;
+    width:92%;
+    min-height:280px;
+    border-radius:15px;
+    overflow:hidden;
+    position:relative;
+    background:
+    linear-gradient(90deg,rgba(0,0,0,.78),rgba(0,0,0,.2)),
+    url("https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=1600&q=80")
+    center/cover;
+    display:flex;
+    align-items:center;
+    padding:40px;
+    color:white;
+}
+
+.hero-content{
+    max-width:550px;
+}
+
+.hero h1{
+    font-size:42px;
+    margin-bottom:12px;
+}
+
+.hero p{
+    font-size:18px;
+    margin-bottom:22px;
+    line-height:1.5;
+}
+
+.shop-btn{
+    background:#ffb703;
+    border:0;
+    padding:13px 25px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* DEALS */
+
+.deals{
+    width:92%;
+    margin:20px auto;
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.section-title h2{
+    font-size:24px;
+}
+
+.timer{
+    background:#dc2626;
+    color:white;
+    padding:7px 12px;
+    border-radius:6px;
+    font-size:13px;
+}
+
+/* CATEGORY CARDS */
+
+.categories{
+    width:92%;
+    margin:25px auto;
+}
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(130px,1fr));
+    gap:12px;
+}
+
+.category-card{
+    background:white;
+    border-radius:10px;
+    padding:18px 10px;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+    transition:.2s;
+}
+
+.category-card:hover{
+    transform:translateY(-4px);
+}
+
+.category-icon{
+    font-size:35px;
+    margin-bottom:8px;
+}
+
+/* PRODUCTS */
+
+.products-section{
+    width:92%;
+    margin:30px auto 60px;
+}
+
+.product-tools{
+    display:flex;
+    gap:10px;
+    align-items:center;
+}
+
+.product-tools select{
+    padding:8px;
+    border-radius:6px;
+    border:1px solid #ddd;
+}
+
+.product-grid{
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+    gap:16px;
+}
+
+.product{
+    background:white;
+    border-radius:10px;
+    overflow:hidden;
+    position:relative;
+    box-shadow:0 2px 9px rgba(0,0,0,.08);
+    transition:.25s;
+}
+
+.product:hover{
+    transform:translateY(-4px);
+    box-shadow:0 7px 20px rgba(0,0,0,.13);
+}
+
+.product-image{
+    height:200px;
+    width:100%;
+    object-fit:cover;
+    cursor:pointer;
+}
+
+.wishlist{
+    position:absolute;
+    right:10px;
+    top:10px;
+    width:34px;
+    height:34px;
+    border:0;
+    border-radius:50%;
+    background:white;
+    cursor:pointer;
+    font-size:18px;
+    box-shadow:0 2px 5px rgba(0,0,0,.15);
+}
+
+.wishlist.active{
+    color:#ef4444;
+}
+
+.product-info{
+    padding:13px;
+}
+
+.product-category{
+    color:#6b7280;
+    font-size:11px;
+    text-transform:uppercase;
+}
+
+.product-name{
+    font-size:15px;
+    margin:6px 0;
+    height:38px;
+    overflow:hidden;
+}
+
+.rating{
+    color:#f59e0b;
+    font-size:13px;
+}
+
+.rating span{
+    color:#6b7280;
+}
+
+.price{
+    font-size:21px;
+    font-weight:bold;
+    margin:7px 0;
+}
+
+.old-price{
+    color:#9ca3af;
+    text-decoration:line-through;
+    font-size:12px;
+    margin-left:5px;
+}
+
+.discount{
+    color:#16a34a;
+    font-size:12px;
+}
+
+.add-cart{
+    width:100%;
+    border:0;
+    background:#ffb703;
+    padding:10px;
+    border-radius:6px;
+    cursor:pointer;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.add-cart:hover{
+    background:#f59e0b;
+}
+
+/* CART */
+
+.cart-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    z-index:2000;
+    display:none;
+}
+
+.cart-overlay.show{
+    display:block;
+}
+
+.cart-panel{
+    position:absolute;
+    right:0;
+    top:0;
+    height:100%;
+    width:min(450px,100%);
+    background:white;
+    padding:20px;
+    overflow-y:auto;
+    animation:slideIn .25s;
+}
+
+@keyframes slideIn{
+    from{transform:translateX(100%)}
+    to{transform:translateX(0)}
+}
+
+.cart-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:1px solid #ddd;
+    padding-bottom:15px;
+}
+
+.close{
+    border:0;
+    background:none;
+    font-size:25px;
+    cursor:pointer;
+}
+
+.cart-item{
+    display:flex;
+    gap:12px;
+    padding:15px 0;
+    border-bottom:1px solid #eee;
+}
+
+.cart-item img{
+    width:75px;
+    height:75px;
+    object-fit:cover;
+    border-radius:7px;
+}
+
+.cart-item-info{
+    flex:1;
+}
+
+.cart-item-name{
+    font-size:14px;
+    font-weight:bold;
+}
+
+.quantity{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:8px;
+}
+
+.quantity button{
+    width:27px;
+    height:27px;
+    border:1px solid #ddd;
+    background:#f3f4f6;
+    cursor:pointer;
+    border-radius:4px;
+}
+
+.remove{
+    border:0;
+    background:none;
+    color:#dc2626;
+    cursor:pointer;
+    font-size:12px;
+    margin-top:5px;
+}
+
+.cart-summary{
+    margin-top:20px;
+    padding-top:15px;
+    border-top:2px solid #ddd;
+}
+
+.summary-row{
+    display:flex;
+    justify-content:space-between;
+    margin:10px 0;
+}
+
+.total{
+    font-size:23px;
+    font-weight:bold;
+}
+
+.checkout{
+    width:100%;
+    padding:13px;
+    border:0;
+    background:#16a34a;
+    color:white;
+    border-radius:7px;
+    cursor:pointer;
+    margin-top:12px;
+    font-weight:bold;
+}
+
+.empty-cart{
+    text-align:center;
+    padding:50px 10px;
+    color:#6b7280;
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.6);
+    z-index:3000;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:15px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    background:white;
+    width:min(700px,100%);
+    max-height:90vh;
+    overflow:auto;
+    border-radius:12px;
+    padding:25px;
+    position:relative;
+}
+
+.modal-close{
+    position:absolute;
+    right:18px;
+    top:12px;
+    border:0;
+    background:none;
+    font-size:27px;
+    cursor:pointer;
+}
+
+.detail-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:25px;
+}
+
+.detail-grid img{
+    width:100%;
+    border-radius:10px;
+}
+
+.detail-info h2{
+    margin:10px 0;
+}
+
+.feature-list{
+    margin:15px 0;
+    padding-left:20px;
+    line-height:1.8;
+}
+
+.buy-now{
+    background:#16a34a;
+    color:white;
+    border:0;
+    padding:12px 20px;
+    border-radius:6px;
+    cursor:pointer;
+    width:100%;
+    font-weight:bold;
+}
+
+/* CHECKOUT */
+
+.checkout-form{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.checkout-form input,
+.checkout-form textarea,
+.checkout-form select{
+    padding:12px;
+    border:1px solid #ddd;
+    border-radius:6px;
+    outline:none;
+}
+
+.checkout-form textarea{
+    min-height:80px;
+    resize:vertical;
+}
+
+.place-order{
+    background:#16a34a;
+    color:white;
+    border:0;
+    padding:13px;
+    border-radius:7px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* TOAST */
+
+.toast{
+    position:fixed;
+    bottom:25px;
+    left:50%;
+    transform:translateX(-50%) translateY(100px);
+    background:#111827;
+    color:white;
+    padding:13px 20px;
+    border-radius:7px;
+    z-index:5000;
+    transition:.3s;
+    opacity:0;
+}
+
+.toast.show{
+    transform:translateX(-50%) translateY(0);
+    opacity:1;
+}
+
+/* FOOTER */
+
+footer{
+    background:#111827;
+    color:#d1d5db;
+    padding:40px 5%;
+    margin-top:40px;
+}
+
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:30px;
+}
+
+footer h3{
+    color:white;
+    margin-bottom:12px;
+}
+
+footer p{
+    font-size:13px;
+    line-height:1.8;
+}
+
+/* DARK MODE */
+
+body.dark{
+    background:#111827;
+    color:#f9fafb;
+}
+
+body.dark .product,
+body.dark .category-card,
+body.dark .cart-panel,
+body.dark .modal-box{
+    background:#1f2937;
+    color:white;
+}
+
+body.dark .product-category,
+body.dark .rating span{
+    color:#cbd5e1;
+}
+
+body.dark .cart-panel{
+    border-left:1px solid #374151;
+}
+
+body.dark .product-tools select{
+    background:#1f2937;
+    color:white;
+    border-color:#4b5563;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1100px){
+    .product-grid{
+        grid-template-columns:repeat(4,1fr);
+    }
+}
+
+@media(max-width:850px){
+    .product-grid{
+        grid-template-columns:repeat(3,1fr);
+    }
+
+    .header-actions .header-btn{
+        display:none;
+    }
+
+    .hero h1{
+        font-size:34px;
+    }
+
+    .footer-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:600px){
+
+    .topbar{
+        flex-wrap:wrap;
+        padding:10px 3%;
+        gap:9px;
+    }
+
+    .logo{
+        font-size:21px;
+    }
+
+    .search-box{
+        order:3;
+        flex-basis:100%;
+    }
+
+    .navbar{
+        padding:8px 3%;
+    }
+
+    .hero{
+        min-height:300px;
+        padding:25px;
+        width:94%;
+    }
+
+    .hero h1{
+        font-size:29px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .product-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:10px;
+    }
+
+    .products-section,
+    .categories,
+    .deals{
+        width:94%;
+    }
+
+    .product-image{
+        height:150px;
+    }
+
+    .product-info{
+        padding:10px;
+    }
+
+    .product-name{
+        font-size:13px;
+    }
+
+    .price{
+        font-size:17px;
+    }
+
+    .detail-grid{
+        grid-template-columns:1fr;
+    }
+
+    .footer-grid{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:370px){
+    .product-grid{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .product-image{
+        height:130px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<header class="header">
+
+    <div class="topbar">
+
+        <div class="logo" onclick="showHome()">
+            Nova<span>Mart</span>
+        </div>
+
+        <div class="search-box">
+            <input
+                id="searchInput"
+                type="text"
+                placeholder="Search for products, brands and more..."
+                oninput="searchProducts()"
+            >
+            <button class="search-btn">🔍</button>
+        </div>
+
+        <div class="header-actions">
+
+            <button class="header-btn" onclick="toggleDarkMode()">
+                🌙
+            </button>
+
+            <button class="header-btn" onclick="showWishlist()">
+                ❤️ Wishlist
+            </button>
+
+            <button class="header-btn cart-button" onclick="openCart()">
+                🛒
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+
+        </div>
+
+    </div>
+
+    <nav class="navbar" id="navbar"></nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Everything you need. One place.</h1>
+
+        <p>
+            Discover electronics, home essentials, kitchen products,
+            stationery, garage tools and much more.
+        </p>
+
+        <button class="shop-btn" onclick="scrollToProducts()">
+            Shop Now →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+
+<section class="categories">
+
+    <div class="section-title">
+        <h2>Shop by Category</h2>
+    </div>
+
+    <div class="category-grid" id="categoryGrid"></div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+
+<section class="products-section" id="products">
+
+    <div class="section-title">
+
+        <h2 id="productHeading">
+            Popular Products
+        </h2>
+
+        <div class="product-tools">
+
+            <select id="sortSelect" onchange="sortProducts()">
+
+                <option value="default">Sort</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+                <option value="rating">Top Rated</option>
+
+            </select>
+
+        </div>
+
+    </div>
+
+    <div class="product-grid" id="productGrid"></div>
+
+</section>
+
+
+<!-- CART -->
+
+<div class="cart-overlay" id="cartOverlay" onclick="closeCartOutside(event)">
+
+    <aside class="cart-panel">
+
+        <div class="cart-header">
+
+            <h2>Your Cart</h2>
+
+            <button class="close" onclick="closeCart()">×</button>
+
+        </div>
+
+        <div id="cartItems"></div>
+
+        <div class="cart-summary" id="cartSummary"></div>
+
+    </aside>
+
+</div>
+
+
+<!-- PRODUCT DETAIL MODAL -->
+
+<div class="modal" id="productModal">
+
+    <div class="modal-box">
+
+        <button class="modal-close" onclick="closeModal('productModal')">
+            ×
+        </button>
+
+        <div id="productDetails"></div>
+
+    </div>
+
+</div>
+
+
+<!-- CHECKOUT MODAL -->
+
+<div class="modal" id="checkoutModal">
+
+    <div class="modal-box">
+
+        <button class="modal-close" onclick="closeModal('checkoutModal')">
+            ×
+        </button>
+
+        <h2>Complete Your Order</h2>
+
+        <br>
+
+        <form class="checkout-form" onsubmit="placeOrder(event)">
+
+            <input
+                required
+                type="text"
+                id="customerName"
+                placeholder="Full Name"
+            >
+
+            <input
+                required
+                type="tel"
+                id="customerPhone"
+                placeholder="Mobile Number"
+            >
+
+            <input
+                required
+                type="email"
+                id="customerEmail"
+                placeholder="Email Address"
+            >
+
+            <textarea
+                required
+                id="customerAddress"
+                placeholder="Delivery Address"
+            ></textarea>
+
+            <select id="paymentMethod">
+
+                <option>Cash on Delivery</option>
+                <option>UPI - Demo Payment</option>
+                <option>Credit / Debit Card - Demo</option>
+
+            </select>
+
+            <div id="checkoutTotal"></div>
+
+            <button class="place-order">
+                Place Order
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- TOAST -->
+
+<div class="toast" id="toast"></div>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-grid">
+
+        <div>
+            <h3>NovaMart</h3>
+            <p>
+                Your demo destination for everyday products,
+                electronics, home essentials and more.
+            </p>
+        </div>
+
+        <div>
+            <h3>Customer Service</h3>
+            <p>Help Center</p>
+            <p>Returns</p>
+            <p>Track Order</p>
+            <p>Contact Us</p>
+        </div>
+
+        <div>
+            <h3>Categories</h3>
+            <p>Electronics</p>
+            <p>Home</p>
+            <p>Kitchen</p>
+            <p>Garage</p>
+        </div>
+
+        <div>
+            <h3>About</h3>
+            <p>About NovaMart</p>
+            <p>Careers</p>
+            <p>Privacy</p>
+            <p>Terms</p>
+        </div>
+
+    </div>
+
+    <br>
+
+    <p style="text-align:center;">
+        © 2026 NovaMart — Demo E-Commerce Website
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =========================
+   PRODUCT DATABASE
+========================= */
+
+const products = [
+
+{
+id:1,
+name:"Wireless Bluetooth Headphones",
+category:"Electronics",
+price:1499,
+oldPrice:2499,
+rating:4.5,
+reviews:1284,
+emoji:"🎧",
+image:"https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80",
+description:"Comfortable wireless headphones with rich sound and long battery life."
+},
+
+{
+id:2,
+name:"Smart LED Desk Lamp",
+category:"Home",
+price:899,
+oldPrice:1299,
+rating:4.3,
+reviews:542,
+emoji:"💡",
+image:"https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=700&q=80",
+description:"Modern LED desk lamp perfect for studying, working and reading."
+},
+
+{
+id:3,
+name:"Stainless Steel Kitchen Set",
+category:"Kitchen",
+price:1299,
+oldPrice:1799,
+rating:4.6,
+reviews:873,
+emoji:"🍳",
+image:"https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=700&q=80",
+description:"Useful stainless steel kitchen tools for everyday cooking."
+},
+
+{
+id:4,
+name:"Professional Screwdriver Set",
+category:"Garage",
+price:749,
+oldPrice:999,
+rating:4.7,
+reviews:932,
+emoji:"🔧",
+image:"https://images.unsplash.com/photo-1581147036324-c1c76b4a5a0c?auto=format&fit=crop&w=700&q=80",
+description:"Multi-purpose screwdriver set for home and workshop repairs."
+},
+
+{
+id:5,
+name:"Premium Notebook Pack",
+category:"Stationery",
+price:399,
+oldPrice:599,
+rating:4.4,
+reviews:641,
+emoji:"📓",
+image:"https://images.unsplash.com/photo-1531346680769-a1d79b57de5b?auto=format&fit=crop&w=700&q=80",
+description:"High-quality notebooks suitable for students and professionals."
+},
+
+{
+id:6,
+name:"Classic Casual Sneakers",
+category:"Fashion",
+price:1799,
+oldPrice:2999,
+rating:4.5,
+reviews:721,
+emoji:"👟",
+image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80",
+description:"Comfortable everyday sneakers with a clean modern design."
+},
+
+{
+id:7,
+name:"Portable Bluetooth Speaker",
+category:"Electronics",
+price:1199,
+oldPrice:1999,
+rating:4.4,
+reviews:1540,
+emoji:"🔊",
+image:"https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=700&q=80",
+description:"Compact Bluetooth speaker with powerful audio."
+},
+
+{
+id:8,
+name:"Ceramic Coffee Mug Set",
+category:"Kitchen",
+price:549,
+oldPrice:799,
+rating:4.6,
+reviews:381,
+emoji:"☕",
+image:"https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?auto=format&fit=crop&w=700&q=80",
+description:"Elegant ceramic coffee mugs for your home or office."
+},
+
+{
+id:9,
+name:"Mechanical Keyboard",
+category:"Electronics",
+price:2299,
+oldPrice:3299,
+rating:4.8,
+reviews:2190,
+emoji:"⌨️",
+image:"https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=700&q=80",
+description:"Responsive mechanical keyboard for gaming and productivity."
+},
+
+{
+id:10,
+name:"Minimal Wall Clock",
+category:"Home",
+price:699,
+oldPrice:1099,
+rating:4.2,
+reviews:214,
+emoji:"🕐",
+image:"https://images.unsplash.com/photo-1563861826100-9cb868fdbe1c?auto=format&fit=crop&w=700&q=80",
+description:"Minimal wall clock designed for modern interiors."
+},
+
+{
+id:11,
+name:"Electric Kettle",
+category:"Kitchen",
+price:999,
+oldPrice:1499,
+rating:4.5,
+reviews:1100,
+emoji:"🫖",
+image:"https://images.unsplash.com/photo-1594213114663-d94db9b171f9?auto=format&fit=crop&w=700&q=80",
+description:"Fast boiling electric kettle for tea, coffee and more."
+},
+
+{
+id:12,
+name:"Cordless Drill Machine",
+category:"Garage",
+price:2899,
+oldPrice:3999,
+rating:4.7,
+reviews:812,
+emoji:"🛠️",
+image:"https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=700&q=80",
+description:"Cordless drill for household maintenance and DIY projects."
+},
+
+{
+id:13,
+name:"Backpack for College",
+category:"Fashion",
+price:1099,
+oldPrice:1699,
+rating:4.5,
+reviews:923,
+emoji:"🎒",
+image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80",
+description:"Spacious backpack with compartments for books and electronics."
+},
+
+{
+id:14,
+name:"Ball Pen Pack",
+category:"Stationery",
+price:149,
+oldPrice:199,
+rating:4.4,
+reviews:342,
+emoji:"🖊️",
+image:"https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=700&q=80",
+description:"Smooth-writing pens for school, college and office."
+},
+
+{
+id:15,
+name:"Indoor Plant Pot",
+category:"Home",
+price:449,
+oldPrice:699,
+rating:4.3,
+reviews:298,
+emoji:"🪴",
+image:"https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=700&q=80",
+description:"Decorative plant pot for indoor plants."
+},
+
+{
+id:16,
+name:"Digital Kitchen Scale",
+category:"Kitchen",
+price:649,
+oldPrice:899,
+rating:4.6,
+reviews:475,
+emoji:"⚖️",
+image:"https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=700&q=80",
+description:"Accurate digital kitchen scale for cooking and baking."
+},
+
+{
+id:17,
+name:"Car Cleaning Kit",
+category:"Garage",
+price:799,
+oldPrice:1199,
+rating:4.4,
+reviews:618,
+emoji:"🚗",
+image:"https://images.unsplash.com/photo-1607860108855-64acf2078ed9?auto=format&fit=crop&w=700&q=80",
+description:"Complete cleaning kit for keeping your car looking fresh."
+},
+
+{
+id:18,
+name:"USB-C Fast Charger",
+category:"Electronics",
+price:599,
+oldPrice:999,
+rating:4.5,
+reviews:1920,
+emoji:"🔌",
+image:"https://images.unsplash.com/photo-1591290619762-c5880d3a7d45?auto=format&fit=crop&w=700&q=80",
+description:"Compact fast charger with USB-C support."
+},
+
+{
+id:19,
+name:"Desk Organizer",
+category:"Stationery",
+price:299,
+oldPrice:449,
+rating:4.2,
+reviews:245,
+emoji:"🗂️",
+image:"https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=700&q=80",
+description:"Keep your workspace clean and organized."
+},
+
+{
+id:20,
+name:"Smart Water Bottle",
+category:"Home",
+price:799,
+oldPrice:1199,
+rating:4.1,
+reviews:178,
+emoji:"🍶",
+image:"https://images.unsplash.com/photo-1602143407151-7111542de6e8?auto=format&fit=crop&w=700&q=80",
+description:"Reusable bottle with a modern lightweight design."
+},
+
+{
+id:21,
+name:"Gaming Mouse",
+category:"Electronics",
+price:899,
+oldPrice:1499,
+rating:4.7,
+reviews:1421,
+emoji:"🖱️",
+image:"https://images.unsplash.com/photo-1527814050087-3793815479db?auto=format&fit=crop&w=700&q=80",
+description:"Precision gaming mouse with responsive controls."
+},
+
+{
+id:22,
+name:"Non-Stick Frying Pan",
+category:"Kitchen",
+price:849,
+oldPrice:1299,
+rating:4.6,
+reviews:982,
+emoji:"🍳",
+image:"https://images.unsplash.com/photo-1584990347449-ae1d6c8e9f2f?auto=format&fit=crop&w=700&q=80",
+description:"Durable non-stick frying pan for everyday cooking."
+},
+
+{
+id:23,
+name:"LED Strip Lights",
+category:"Home",
+price:499,
+oldPrice:799,
+rating:4.4,
+reviews:832,
+emoji:"✨",
+image:"https://images.unsplash.com/photo-1565814329452-e1efa11c5b89?auto=format&fit=crop&w=700&q=80",
+description:"Decorative LED strip lights for bedrooms and workspaces."
+},
+
+{
+id:24,
+name:"Tool Box",
+category:"Garage",
+price:999,
+oldPrice:1499,
+rating:4.5,
+reviews:421,
+emoji:"🧰",
+image:"https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=700&q=80",
+description:"Compact toolbox for storing essential repair tools."
+},
+
+{
+id:25,
+name:"A4 Paper Pack",
+category:"Stationery",
+price:299,
+oldPrice:399,
+rating:4.3,
+reviews:512,
+emoji:"📄",
+image:"https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&w=700&q=80",
+description:"High-quality A4 paper for printing and writing."
+},
+
+{
+id:26,
+name:"Travel Sunglasses",
+category:"Fashion",
+price:699,
+oldPrice:999,
+rating:4.2,
+reviews:361,
+emoji:"🕶️",
+image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=80",
+description:"Stylish sunglasses suitable for everyday travel."
+},
+
+{
+id:27,
+name:"Air Fryer",
+category:"Kitchen",
+price:3499,
+oldPrice:4999,
+rating:4.7,
+reviews:2134,
+emoji:"🍟",
+image:"https://images.unsplash.com/photo-1648137660487-9e5e6f4b7d44?auto=format&fit=crop&w=700&q=80",
+description:"Convenient air fryer for quick and easy meals."
+},
+
+{
+id:28,
+name:"Power Bank 20000mAh",
+category:"Electronics",
+price:1399,
+oldPrice:1999,
+rating:4.5,
+reviews:1873,
+emoji:"🔋",
+image:"https://images.unsplash.com/photo-1609592424809-c5d5a4c5e6b6?auto=format&fit=crop&w=700&q=80",
+description:"High-capacity portable power bank for your devices."
+},
+
+{
+id:29,
+name:"Office Chair",
+category:"Home",
+price:5499,
+oldPrice:7999,
+rating:4.6,
+reviews:672,
+emoji:"🪑",
+image:"https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&w=700&q=80",
+description:"Comfortable office chair designed for long working sessions."
+},
+
+{
+id:30,
+name:"Study Table",
+category:"Home",
+price:3999,
+oldPrice:5999,
+rating:4.5,
+reviews:389,
+emoji:"🖥️",
+image:"https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=700&q=80",
+description:"Simple and spacious study table for home and college."
+}
+
+];
+
+
+/* =========================
+   STATE
+========================= */
+
+let cart = JSON.parse(localStorage.getItem("novamart_cart")) || [];
+
+let wishlist =
+JSON.parse(localStorage.getItem("novamart_wishlist")) || [];
+
+let currentProducts = [...products];
+
+let currentCategory = "All";
+
+
+/* =========================
+   INITIALIZATION
+========================= */
+
+function init(){
+
+    createNavbar();
+
+    createCategories();
+
+    renderProducts(products);
+
+    updateCart();
+
+}
+
+init();
+
+
+/* =========================
+   NAVBAR
+========================= */
+
+const categories = [
+"All",
+"Electronics",
+"Home",
+"Kitchen",
+"Garage",
+"Stationery",
+"Fashion"
+];
+
+function createNavbar(){
+
+    const nav = document.getElementById("navbar");
+
+    nav.innerHTML = categories.map(category => `
+        <button
+        class="${category === "All" ? "active":""}"
+        onclick="filterCategory('${category}',this)">
+            ${category}
+        </button>
+    `).join("");
+
+}
+
+
+/* =========================
+   CATEGORY CARDS
+========================= */
+
+const categoryIcons = {
+    All:"🛍️",
+    Electronics:"📱",
+    Home:"🏠",
+    Kitchen:"🍳",
+    Garage:"🔧",
+    Stationery:"📚",
+    Fashion:"👕"
+};
+
+function createCategories(){
+
+    const grid =
+    document.getElementById("categoryGrid");
+
+    grid.innerHTML = categories.map(category => `
+
+        <div
+        class="category-card"
+        onclick="filterCategory('${category}')">
+
+            <div class="category-icon">
+                ${categoryIcons[category]}
+            </div>
+
+            <b>${category}</b>
+
+        </div>
+
+    `).join("");
+
+}
+
+
+/* =========================
+   PRODUCT RENDERING
+========================= */
+
+function renderProducts(list){
+
+    const grid =
+    document.getElementById("productGrid");
+
+    if(list.length === 0){
+
+        grid.innerHTML = `
+            <div style="grid-column:1/-1;text-align:center;padding:60px;">
+                <h2>No products found 😕</h2>
+                <p>Try another search or category.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+    grid.innerHTML = list.map(product => {
+
+        const discount =
+        Math.round(
+            (1-product.price/product.oldPrice)*100
+        );
+
+        const liked =
+        wishlist.includes(product.id);
+
+        return `
+
+        <article class="product">
+
+            <button
+            class="wishlist ${liked ? "active":""}"
+            onclick="toggleWishlist(${product.id},event)">
+                ${liked ? "♥":"♡"}
+            </button>
+
+            <img
+            class="product-image"
+            src="${product.image}"
+            alt="${product.name}"
+            loading="lazy"
+            onclick="openProduct(${product.id})">
+
+            <div class="product-info">
+
+                <div class="product-category">
+                    ${product.category}
+                </div>
+
+                <div
+                class="product-name"
+                onclick="openProduct(${product.id})"
+                style="cursor:pointer">
+                    ${product.name}
+                </div>
+
+                <div class="rating">
+                    ⭐ ${product.rating}
+                    <span>(${product.reviews})</span>
+                </div>
+
+                <div class="price">
+                    ₹${product.price.toLocaleString("en-IN")}
+                    <span class="old-price">
+                        ₹${product.oldPrice.toLocaleString("en-IN")}
+                    </span>
+                </div>
+
+                <div class="discount">
+                    ${discount}% off
+                </div>
+
+                <button
+                class="add-cart"
+                onclick="addToCart(${product.id})">
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </article>
+
+        `;
+
+    }).join("");
+
+}
+
+
+/* =========================
+   FILTER CATEGORY
+========================= */
+
+function filterCategory(category,button){
+
+    currentCategory = category;
+
+    document
+    .querySelectorAll(".navbar button")
+    .forEach(btn => btn.classList.remove("active"));
+
+    if(button){
+        button.classList.add("active");
+    }else{
+
+        document
+        .querySelectorAll(".navbar button")
+        .forEach(btn => {
+
+            if(btn.innerText.trim() === category){
+                btn.classList.add("active");
+            }
+
+        });
+
+    }
+
+    document.getElementById("searchInput").value = "";
+
+    if(category === "All"){
+
+        currentProducts = [...products];
+
+    }else{
+
+        currentProducts =
+        products.filter(
+            product => product.category === category
+        );
+
+    }
+
+    document.getElementById("productHeading").innerText =
+    category === "All"
+    ? "Popular Products"
+    : category + " Products";
+
+    renderProducts(currentProducts);
+
+    scrollToProducts();
+
+}
+
+
+/* =========================
+   SEARCH
+========================= */
+
+function searchProducts(){
+
+    const query =
+    document
+    .getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
+
+    let base =
+    currentCategory === "All"
+    ? products
+    : products.filter(
+        p => p.category === currentCategory
+    );
+
+    currentProducts = base.filter(product =>
+        product.name.toLowerCase().includes(query) ||
+        product.category.toLowerCase().includes(query) ||
+        product.description.toLowerCase().includes(query)
+    );
+
+    document.getElementById("productHeading").innerText =
+    query
+    ? `Search results for "${query}"`
+    : currentCategory === "All"
+        ? "Popular Products"
+        : currentCategory + " Products";
+
+    renderProducts(currentProducts);
+
+}
+
+
+/* =========================
+   SORT
+========================= */
+
+function sortProducts(){
+
+    const sort =
+    document.getElementById("sortSelect").value;
+
+    let sorted = [...currentProducts];
+
+    if(sort === "low"){
+
+        sorted.sort((a,b)=>a.price-b.price);
+
+    }
+
+    if(sort === "high"){
+
+        sorted.sort((a,b)=>b.price-a.price);
+
+    }
+
+    if(sort === "rating"){
+
+        sorted.sort((a,b)=>b.rating-a.rating);
+
+    }
+
+    renderProducts(sorted);
+
+}
+
+
+/* =========================
+   CART
+========================= */
+
+function addToCart(id){
+
+    const product =
+    products.find(p => p.id === id);
+
+    const existing =
+    cart.find(item => item.id === id);
+
+    if(existing){
+
+        existing.quantity++;
+
+    }else{
+
+        cart.push({
+            ...product,
+            quantity:1
+        });
+
+    }
+
+    saveCart();
+
+    updateCart();
+
+    showToast(`${product.name} added to cart 🛒`);
+
+}
+
+
+function saveCart(){
+
+    localStorage.setItem(
+        "novamart_cart",
+        JSON.stringify(cart)
+    );
+
+}
+
+
+function updateCart(){
+
+    const count =
+    cart.reduce(
+        (total,item)=>total+item.quantity,
+        0
+    );
+
+    document.getElementById("cartCount").innerText =
+    count;
+
+    renderCart();
+
+}
+
+
+function renderCart(){
+
+    const container =
+    document.getElementById("cartItems");
+
+    const summary =
+    document.getElementById("cartSummary");
+
+    if(cart.length === 0){
+
+        container.innerHTML = `
+            <div class="empty-cart">
+                <div style="font-size:50px;">🛒</div>
+                <h3>Your cart is empty</h3>
+                <p>Add some products to get started.</p>
+            </div>
+        `;
+
+        summary.innerHTML = "";
+
+        return;
+
+    }
+
+    container.innerHTML =
+    cart.map(item => `
+
+        <div class="cart-item">
+
+            <img
+            src="${item.image}"
+            alt="${item.name}">
+
+            <div class="cart-item-info">
+
+                <div class="cart-item-name">
+                    ${item.name}
+                </div>
+
+                <div>
+                    ₹${item.price.toLocaleString("en-IN")}
+                </div>
+
+                <div class="quantity">
+
+                    <button
+                    onclick="changeQuantity(${item.id},-1)">
+                        −
+                    </button>
+
+                    <b>${item.quantity}</b>
+
+                    <button
+                    onclick="changeQuantity(${item.id},1)">
+                        +
+                    </button>
+
+                </div>
+
+                <button
+                class="remove"
+                onclick="removeFromCart(${item.id})">
+                    Remove
+                </button>
+
+            </div>
+
+        </div>
+
+    `).join("");
+
+
+    const subtotal =
+    cart.reduce(
+        (total,item)=>
+        total + item.price * item.quantity,
+        0
+    );
+
+    const delivery =
+    subtotal >= 999 ? 0 : 49;
+
+    const total =
+    subtotal + delivery;
+
+    summary.innerHTML = `
+
+        <div class="summary-row">
+            <span>Subtotal</span>
+            <b>₹${subtotal.toLocaleString("en-IN")}</b>
+        </div>
+
+        <div class="summary-row">
+            <span>Delivery</span>
+            <b>
+                ${delivery === 0
+                ? "FREE"
+                : "₹"+delivery}
+            </b>
+        </div>
+
+        <div class="summary-row total">
+            <span>Total</span>
+            <span>
+                ₹${total.toLocaleString("en-IN")}
+            </span>
+        </div>
+
+        <button
+        class="checkout"
+        onclick="openCheckout()">
+            Proceed to Checkout
+        </button>
+
+    `;
+
+}
+
+
+function changeQuantity(id,change){
+
+    const item =
+    cart.find(item => item.id === id);
+
+    if(!item) return;
+
+    item.quantity += change;
+
+    if(item.quantity <= 0){
+
+        cart =
+        cart.filter(item => item.id !== id);
+
+    }
+
+    saveCart();
+
+    updateCart();
+
+}
+
+
+function removeFromCart(id){
+
+    cart =
+    cart.filter(item => item.id !== id);
+
+    saveCart();
+
+    updateCart();
+
+    showToast("Product removed");
+
+}
+
+
+/* =========================
+   CART PANEL
+========================= */
+
+function openCart(){
+
+    document
+    .getElementById("cartOverlay")
+    .classList.add("show");
+
+}
+
+function closeCart(){
+
+    document
+    .getElementById("cartOverlay")
+    .classList.remove("show");
+
+}
+
+function closeCartOutside(event){
+
+    if(event.target.id === "cartOverlay"){
+        closeCart();
+    }
+
+}
+
+
+/* =========================
+   PRODUCT DETAILS
+========================= */
+
+function openProduct(id){
+
+    const product =
+    products.find(p => p.id === id);
+
+    const discount =
+    Math.round(
+        (1-product.price/product.oldPrice)*100
+    );
+
+    document.getElementById("productDetails").innerHTML = `
+
+        <div class="detail-grid">
+
+            <img
+            src="${product.image}"
+            alt="${product.name}">
+
+            <div class="detail-info">
+
+                <div class="product-category">
+                    ${product.category}
+                </div>
+
+                <h2>${product.name}</h2>
+
+                <div class="rating">
+                    ⭐ ${product.rating}
+                    <span>
+                        (${product.reviews} reviews)
+                    </span>
+                </div>
+
+                <br>
+
+                <div class="price">
+                    ₹${product.price.toLocaleString("en-IN")}
+                </div>
+
+                <div class="discount">
+                    ${discount}% OFF
+                </div>
+
+                <p style="margin-top:15px;line-height:1.6">
+                    ${product.description}
+                </p>
+
+                <ul class="feature-list">
+                    <li>Fast delivery available</li>
+                    <li>Easy returns</li>
+                    <li>Secure checkout</li>
+                    <li>Quality checked product</li>
+                </ul>
+
+                <button
+                class="add-cart"
+                onclick="addToCart(${product.id});closeModal('productModal')">
+                    Add to Cart
+                </button>
+
+            </div>
+
+        </div>
+
+    `;
+
+    document
+    .getElementById("productModal")
+    .classList.add("show");
+
+}
+
+
+/* =========================
+   WISHLIST
+========================= */
+
+function toggleWishlist(id,event){
+
+    event.stopPropagation();
+
+    if(wishlist.includes(id)){
+
+        wishlist =
+        wishlist.filter(item => item !== id);
+
+        showToast("Removed from wishlist");
+
+    }else{
+
+        wishlist.push(id);
+
+        showToast("Added to wishlist ❤️");
+
+    }
+
+    localStorage.setItem(
+        "novamart_wishlist",
+        JSON.stringify(wishlist)
+    );
+
+    renderProducts(currentProducts);
+
+}
+
+
+function showWishlist(){
+
+    if(wishlist.length === 0){
+
+        showToast("Your wishlist is empty ❤️");
+
+        return;
+
+    }
+
+    currentProducts =
+    products.filter(
+        product => wishlist.includes(product.id)
+    );
+
+    document.getElementById("productHeading").innerText =
+    "Your Wishlist ❤️";
+
+    renderProducts(currentProducts);
+
+    scrollToProducts();
+
+}
+
+
+/* =========================
+   CHECKOUT
+========================= */
+
+function openCheckout(){
+
+    if(cart.length === 0){
+
+        showToast("Your cart is empty");
+
+        return;
+
+    }
+
+    const subtotal =
+    cart.reduce(
+        (total,item)=>
+        total + item.price * item.quantity,
+        0
+    );
+
+    const delivery =
+    subtotal >= 999 ? 0 : 49;
+
+    const total =
+    subtotal + delivery;
+
+    document.getElementById("checkoutTotal").innerHTML = `
+
+        <div style="
+        padding:15px;
+        background:#f3f4f6;
+        border-radius:7px;
+        font-size:18px;
+        font-weight:bold">
+
+            Order Total:
+            ₹${total.toLocaleString("en-IN")}
+
+        </div>
+
+    `;
+
+    closeCart();
+
+    document
+    .getElementById("checkoutModal")
+    .classList.add("show");
+
+}
+
+
+function placeOrder(event){
+
+    event.preventDefault();
+
+    const name =
+    document.getElementById("customerName").value;
+
+    const orderId =
+    "NM" +
+    Math.floor(
+        100000 + Math.random()*900000
+    );
+
+    cart = [];
+
+    saveCart();
+
+    updateCart();
+
+    closeModal("checkoutModal");
+
+    showToast(
+        `Order ${orderId} placed successfully! 🎉`
+    );
+
+    event.target.reset();
+
+}
+
+
+/* =========================
+   MODALS
+========================= */
+
+function closeModal(id){
+
+    document
+    .getElementById(id)
+    .classList.remove("show");
+
+}
+
+
+/* =========================
+   DARK MODE
+========================= */
+
+function toggleDarkMode(){
+
+    document.body.classList.toggle("dark");
+
+    localStorage.setItem(
+        "novamart_dark",
+        document.body.classList.contains("dark")
+    );
+
+}
+
+if(localStorage.getItem("novamart_dark") === "true"){
+
+    document.body.classList.add("dark");
+
+}
+
+
+/* =========================
+   TOAST
+========================= */
+
+function showToast(message){
+
+    const toast =
+    document.getElementById("toast");
+
+    toast.innerText = message;
+
+    toast.classList.add("show");
+
+    clearTimeout(window.toastTimer);
+
+    window.toastTimer =
+    setTimeout(()=>{
+        toast.classList.remove("show");
+    },2200);
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function scrollToProducts(){
+
+    document
+    .getElementById("products")
+    .scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+function showHome(){
+
+    currentCategory = "All";
+
+    currentProducts = [...products];
+
+    document.getElementById("searchInput").value = "";
+
+    document.getElementById("productHeading").innerText =
+    "Popular Products";
+
+    renderProducts(products);
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =========================
+   KEYBOARD SHORTCUT
+========================= */
+
+document.addEventListener("keydown",event=>{
+
+    if(event.key === "Escape"){
+
+        closeCart();
+
+        closeModal("productModal");
+
+        closeModal("checkoutModal");
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>
